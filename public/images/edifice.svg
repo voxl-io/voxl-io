@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" width="230" version="1.1" height="220">
+  <defs>
+    <style type="text/css">
+			#left, #right { stroke: #2e3436; stroke-width: 10; stroke-miterlimit: 4; }
+			#left { fill: #729fcf; }
+			#right { fill: #3465a4; }
+		</style>
+  </defs>
+  <path id="left" d="m 110,10 0,200 -100,-50 50,-110 z"/>
+  <path id="right" d="m 120,10 0,200 100,-50 -50,-110 z"/>
+</svg>
