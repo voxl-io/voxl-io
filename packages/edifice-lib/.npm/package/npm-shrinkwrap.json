@@ -1,0 +1,605 @@
+{
+  "dependencies": {
+    "aabb-3d": {
+      "version": "0.1.0",
+      "dependencies": {
+        "gl-matrix": {
+          "version": "2.1.0"
+        }
+      }
+    },
+    "collide-3d-tilemap": {
+      "version": "0.0.1"
+    },
+    "extend": {
+      "version": "1.2.1"
+    },
+    "gl-matrix": {
+      "version": "2.2.1"
+    },
+    "inherits": {
+      "version": "2.0.1"
+    },
+    "isndarray": {
+      "version": "0.1.0"
+    },
+    "ndarray": {
+      "version": "1.0.15",
+      "dependencies": {
+        "iota-array": {
+          "version": "1.0.0"
+        }
+      }
+    },
+    "ndarray-fill": {
+      "version": "1.0.1",
+      "dependencies": {
+        "cwise": {
+          "version": "1.0.4",
+          "dependencies": {
+            "cwise-parser": {
+              "version": "1.0.0",
+              "dependencies": {
+                "esprima": {
+                  "version": "1.0.4"
+                },
+                "uniq": {
+                  "version": "1.0.1"
+                }
+              }
+            },
+            "cwise-compiler": {
+              "version": "1.0.0",
+              "dependencies": {
+                "uniq": {
+                  "version": "1.0.1"
+                }
+              }
+            },
+            "static-module": {
+              "version": "1.0.0",
+              "dependencies": {
+                "concat-stream": {
+                  "version": "1.4.6",
+                  "dependencies": {
+                    "typedarray": {
+                      "version": "0.0.6"
+                    },
+                    "readable-stream": {
+                      "version": "1.1.13",
+                      "dependencies": {
+                        "core-util-is": {
+                          "version": "1.0.1"
+                        },
+                        "isarray": {
+                          "version": "0.0.1"
+                        },
+                        "string_decoder": {
+                          "version": "0.10.31"
+                        }
+                      }
+                    }
+                  }
+                },
+                "duplexer2": {
+                  "version": "0.0.2",
+                  "dependencies": {
+                    "readable-stream": {
+                      "version": "1.1.13",
+                      "dependencies": {
+                        "core-util-is": {
+                          "version": "1.0.1"
+                        },
+                        "isarray": {
+                          "version": "0.0.1"
+                        },
+                        "string_decoder": {
+                          "version": "0.10.31"
+                        }
+                      }
+                    }
+                  }
+                },
+                "escodegen": {
+                  "version": "1.3.3",
+                  "dependencies": {
+                    "esutils": {
+                      "version": "1.0.0"
+                    },
+                    "estraverse": {
+                      "version": "1.5.1"
+                    },
+                    "esprima": {
+                      "version": "1.1.1"
+                    },
+                    "source-map": {
+                      "version": "0.1.40",
+                      "dependencies": {
+                        "amdefine": {
+                          "version": "0.1.0"
+                        }
+                      }
+                    }
+                  }
+                },
+                "falafel": {
+                  "version": "0.3.1",
+                  "dependencies": {
+                    "esprima": {
+                      "version": "git://github.com/substack/esprima#0a7f8489a11b44b019ce168506f535f22d0be290"
+                    }
+                  }
+                },
+                "object-inspect": {
+                  "version": "0.4.0"
+                },
+                "quote-stream": {
+                  "version": "0.0.0",
+                  "dependencies": {
+                    "minimist": {
+                      "version": "0.0.8"
+                    }
+                  }
+                },
+                "readable-stream": {
+                  "version": "1.0.33-1",
+                  "dependencies": {
+                    "core-util-is": {
+                      "version": "1.0.1"
+                    },
+                    "isarray": {
+                      "version": "0.0.1"
+                    },
+                    "string_decoder": {
+                      "version": "0.10.31"
+                    }
+                  }
+                },
+                "shallow-copy": {
+                  "version": "0.0.1"
+                },
+                "static-eval": {
+                  "version": "0.2.3",
+                  "dependencies": {
+                    "escodegen": {
+                      "version": "0.0.28",
+                      "dependencies": {
+                        "esprima": {
+                          "version": "1.0.4"
+                        },
+                        "estraverse": {
+                          "version": "1.3.2"
+                        },
+                        "source-map": {
+                          "version": "0.1.40",
+                          "dependencies": {
+                            "amdefine": {
+                              "version": "0.1.0"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "through2": {
+                  "version": "0.4.2",
+                  "dependencies": {
+                    "xtend": {
+                      "version": "2.1.2",
+                      "dependencies": {
+                        "object-keys": {
+                          "version": "0.4.0"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "uglify-js": {
+              "version": "2.4.13",
+              "dependencies": {
+                "async": {
+                  "version": "0.2.10"
+                },
+                "source-map": {
+                  "version": "0.1.40",
+                  "dependencies": {
+                    "amdefine": {
+                      "version": "0.1.0"
+                    }
+                  }
+                },
+                "optimist": {
+                  "version": "0.3.7",
+                  "dependencies": {
+                    "wordwrap": {
+                      "version": "0.0.2"
+                    }
+                  }
+                },
+                "uglify-to-browserify": {
+                  "version": "1.0.2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "raf": {
+      "version": "2.0.4",
+      "dependencies": {
+        "performance-now": {
+          "version": "0.1.4"
+        }
+      }
+    },
+    "spatial-events": {
+      "version": "1.1.0"
+    },
+    "spatial-trigger": {
+      "version": "0.0.0"
+    },
+    "tic": {
+      "version": "0.2.1"
+    },
+    "voxel": {
+      "version": "https://github.com/deathcap/voxel/archive/2a92d917199aedc89267c60eb0687d3472a7ce2f.tar.gz",
+      "dependencies": {
+        "inherits": {
+          "version": "1.0.0"
+        }
+      }
+    },
+    "voxel-fakeao": {
+      "version": "0.1.1"
+    },
+    "voxel-mesher": {
+      "version": "0.14.0",
+      "dependencies": {
+        "block-models": {
+          "version": "0.1.0"
+        },
+        "greedy-mesher": {
+          "version": "1.0.2",
+          "dependencies": {
+            "uniq": {
+              "version": "1.0.1"
+            },
+            "iota-array": {
+              "version": "1.0.0"
+            }
+          }
+        },
+        "cwise-compiler": {
+          "version": "1.0.0",
+          "dependencies": {
+            "uniq": {
+              "version": "1.0.1"
+            }
+          }
+        },
+        "typedarray-pool": {
+          "version": "1.1.0",
+          "dependencies": {
+            "bit-twiddle": {
+              "version": "1.0.2"
+            },
+            "dup": {
+              "version": "1.0.0"
+            }
+          }
+        },
+        "gl-buffer": {
+          "version": "2.0.9",
+          "dependencies": {
+            "webglew": {
+              "version": "1.0.4",
+              "dependencies": {
+                "weakmap": {
+                  "version": "0.0.6"
+                }
+              }
+            }
+          }
+        },
+        "gl-vao": {
+          "version": "1.2.0",
+          "dependencies": {
+            "webglew": {
+              "version": "1.0.4",
+              "dependencies": {
+                "weakmap": {
+                  "version": "0.0.6"
+                }
+              }
+            }
+          }
+        },
+        "ndarray-ops": {
+          "version": "1.2.2"
+        }
+      }
+    },
+    "voxel-raycast": {
+      "version": "0.2.1"
+    },
+    "voxel-region-change": {
+      "version": "0.1.0",
+      "dependencies": {
+        "aabb-3d": {
+          "version": "0.0.0"
+        }
+      }
+    },
+    "voxel-shader": {
+      "version": "0.13.1",
+      "dependencies": {
+        "glslify": {
+          "version": "1.6.0",
+          "dependencies": {
+            "concat-stream": {
+              "version": "1.4.6",
+              "dependencies": {
+                "typedarray": {
+                  "version": "0.0.6"
+                },
+                "readable-stream": {
+                  "version": "1.1.13",
+                  "dependencies": {
+                    "core-util-is": {
+                      "version": "1.0.1"
+                    },
+                    "isarray": {
+                      "version": "0.0.1"
+                    },
+                    "string_decoder": {
+                      "version": "0.10.31"
+                    }
+                  }
+                }
+              }
+            },
+            "cssauron": {
+              "version": "0.0.2"
+            },
+            "cssauron-glsl": {
+              "version": "0.0.0"
+            },
+            "emit-function": {
+              "version": "0.0.2"
+            },
+            "esprima": {
+              "version": "1.2.2"
+            },
+            "gl-shader-core": {
+              "version": "2.2.0",
+              "dependencies": {
+                "dup": {
+                  "version": "1.0.0"
+                }
+              }
+            },
+            "glsl-deparser": {
+              "version": "0.0.2",
+              "dependencies": {
+                "through": {
+                  "version": "1.1.2"
+                }
+              }
+            },
+            "glsl-extract": {
+              "version": "0.0.2",
+              "dependencies": {
+                "glsl-parser": {
+                  "version": "0.0.5",
+                  "dependencies": {
+                    "through": {
+                      "version": "1.1.2"
+                    }
+                  }
+                },
+                "glsl-tokenizer": {
+                  "version": "0.0.8"
+                },
+                "utf8-stream": {
+                  "version": "0.0.0",
+                  "dependencies": {
+                    "readable-stream": {
+                      "version": "1.0.33-1",
+                      "dependencies": {
+                        "core-util-is": {
+                          "version": "1.0.1"
+                        },
+                        "isarray": {
+                          "version": "0.0.1"
+                        },
+                        "string_decoder": {
+                          "version": "0.10.31"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "glsl-min-stream": {
+              "version": "0.0.2",
+              "dependencies": {
+                "through": {
+                  "version": "1.1.2"
+                }
+              }
+            },
+            "glslify-stream": {
+              "version": "0.4.1",
+              "dependencies": {
+                "commondir": {
+                  "version": "0.0.1"
+                },
+                "glsl-parser": {
+                  "version": "1.0.1",
+                  "dependencies": {
+                    "glsl-tokenizer": {
+                      "version": "1.1.1"
+                    },
+                    "through": {
+                      "version": "2.3.4"
+                    }
+                  }
+                },
+                "glsl-resolve": {
+                  "version": "0.0.1",
+                  "dependencies": {
+                    "resolve": {
+                      "version": "0.6.3"
+                    },
+                    "xtend": {
+                      "version": "2.2.0"
+                    }
+                  }
+                },
+                "glsl-tokenizer": {
+                  "version": "0.0.9"
+                },
+                "resolve": {
+                  "version": "0.5.1"
+                },
+                "stream-combiner": {
+                  "version": "0.0.2",
+                  "dependencies": {
+                    "duplexer": {
+                      "version": "0.0.4"
+                    }
+                  }
+                },
+                "through": {
+                  "version": "1.1.2"
+                },
+                "wrap-stream": {
+                  "version": "0.0.0",
+                  "dependencies": {
+                    "through": {
+                      "version": "2.3.6"
+                    }
+                  }
+                }
+              }
+            },
+            "new-from": {
+              "version": "0.0.3",
+              "dependencies": {
+                "readable-stream": {
+                  "version": "1.1.13",
+                  "dependencies": {
+                    "core-util-is": {
+                      "version": "1.0.1"
+                    },
+                    "isarray": {
+                      "version": "0.0.1"
+                    },
+                    "string_decoder": {
+                      "version": "0.10.31"
+                    }
+                  }
+                }
+              }
+            },
+            "nopt": {
+              "version": "2.2.1",
+              "dependencies": {
+                "abbrev": {
+                  "version": "1.0.5"
+                }
+              }
+            },
+            "replace-method": {
+              "version": "0.0.0",
+              "dependencies": {
+                "recast": {
+                  "version": "0.5.27",
+                  "dependencies": {
+                    "esprima": {
+                      "version": "git+https://github.com/ariya/esprima.git#54f49ada8739b90f07a9197394dcbd3574596c81"
+                    },
+                    "source-map": {
+                      "version": "0.1.32",
+                      "dependencies": {
+                        "amdefine": {
+                          "version": "0.1.0"
+                        }
+                      }
+                    },
+                    "private": {
+                      "version": "0.1.5"
+                    },
+                    "cls": {
+                      "version": "0.1.5"
+                    },
+                    "ast-types": {
+                      "version": "0.3.38"
+                    }
+                  }
+                }
+              }
+            },
+            "resolve": {
+              "version": "0.6.3"
+            },
+            "shortest": {
+              "version": "0.0.0"
+            },
+            "sleuth": {
+              "version": "0.0.0",
+              "dependencies": {
+                "is-require": {
+                  "version": "0.0.0"
+                },
+                "static-eval": {
+                  "version": "0.1.1"
+                },
+                "astw": {
+                  "version": "0.1.0",
+                  "dependencies": {
+                    "esprima-six": {
+                      "version": "0.0.3"
+                    }
+                  }
+                }
+              }
+            },
+            "static-eval": {
+              "version": "0.2.3",
+              "dependencies": {
+                "escodegen": {
+                  "version": "0.0.28",
+                  "dependencies": {
+                    "esprima": {
+                      "version": "1.0.4"
+                    },
+                    "estraverse": {
+                      "version": "1.3.2"
+                    },
+                    "source-map": {
+                      "version": "0.1.40",
+                      "dependencies": {
+                        "amdefine": {
+                          "version": "0.1.0"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "through": {
+              "version": "2.3.6"
+            }
+          }
+        }
+      }
+    }
+  }
+}
