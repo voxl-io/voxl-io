@@ -9,7 +9,6 @@ mquandalle:jade
 cryptoquick:stylus-multi
 mrt:underscore-string-latest
 iron:router
-mrt:iron-router-progress
 joshowens:accounts-entry
 accounts-ui
 aldeed:collection2
@@ -18,4 +17,5 @@ alanning:roles
 limemakers:three
 mrt:define
 edifice:edifice-lib
+multiply:iron-router-progress
 
