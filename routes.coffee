@@ -8,8 +8,8 @@ Router.map ->
   @route 'editor',
     path: '/editor'
 
-  @route 'game',
-    path: '/game'
+  @route 'library',
+    path: '/library'
 
   @route 'profile',
     path: '/profile'

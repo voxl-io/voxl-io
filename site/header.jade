@@ -1,10 +1,10 @@
 template(name='header')
-  unless nologo
-    img(src='/images/edifice.svg').logo
   nav
     a(href="{{pathFor 'home'}}") Home
     a(href="{{pathFor 'editor'}}") Editor
-    a(href="{{pathFor 'game'}}") Game
+    a(href="{{pathFor 'library'}}") Library
     a(href="{{pathFor 'profile'}}") Profile
     if signedIn
       a(href="/sign-out") Sign Out
+  unless nologo
+    img(src='/images/edifice.svg').logo
