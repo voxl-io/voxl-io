@@ -1,3 +1,27 @@
 template(name='editor')
-  h1 Three.js / Meteor integration example
-  .renderer
+  h1 xml3d / Meteor integration example
+
+  button(data-color='1 0.0 0').active red
+  button(data-color='1 0.5 0') orange
+  button(data-color='1 1 0') yellow
+  button(data-color='0 1 0') green
+  button(data-color='0 0 1') blue
+  button(data-color='1 0 1') violet
+  button(data-color='0 1 1') cyan
+  button(data-color='1 1 1') white
+  button(data-color='0 0 0') black
+
+  //- +xml(ns='http://www.xml3d.org/2009/xml3d')
+  xml3d(activeView='#myView' class="xml3d" width="600px" height="400px")
+    shader(id='orangePhong' script='urn:xml3d:shader:phong')
+      float3(name='diffuseColor')= color
+      float(name='ambientIntensity') 0.5
+
+    lightshader(id='light1' script='urn:xml3d:lightshader:directional')
+      float3(name='intensity') 1 1 1
+    light(shader='#light1')
+
+    view(id='myView' position='0 0 100')
+
+    group(shader='#orangePhong')
+      mesh(src='models/teapot.json')

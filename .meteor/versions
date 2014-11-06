@@ -22,7 +22,7 @@ ctl-helper@1.0.4
 ctl@1.0.2
 ddp@1.0.11
 deps@1.0.5
-edifice:edifice-lib@0.0.0
+edifice:xml3d@0.4.7
 ejson@1.0.4
 email@1.0.4
 fastclick@1.0.1
@@ -47,7 +47,6 @@ jquery@1.0.1
 json@1.0.1
 launch-screen@1.0.0
 less@1.0.11
-limemakers:three@0.68.2
 livedata@1.0.11
 localstorage@1.0.1
 logging@1.0.5
@@ -62,7 +61,6 @@ mquandalle:jade@0.2.8
 mrt:define@0.11.0
 mrt:moment@2.6.0
 mrt:underscore-string-latest@2.3.3
-multiply:iron-router-progress@1.0.0-pre2
 npm-bcrypt@0.7.7
 observe-sequence@1.0.3
 ordered-dict@1.0.1
