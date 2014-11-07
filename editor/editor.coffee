@@ -26,6 +26,9 @@ class @EditorController extends RouteController
           display: 'block'
       , 1000
 
+  onStop: ->
+    $('canvas').parent().remove()
+
   data:
     route: 'editor'
     nologo: yes
