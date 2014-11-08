@@ -6,8 +6,6 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
-  api.use('jquery');
-  api.addFiles('lib/xml-visitor.js', 'client');
   api.addFiles('lib/xml3d.js', 'client');
   api.addFiles('lib/xml3d-camera.js', 'client');
   api.export('XML3D', 'client');
