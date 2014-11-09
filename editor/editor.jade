@@ -33,9 +33,13 @@ template(name='editor')
 
     lightshader(id='light1' script='urn:xml3d:lightshader:directional')
       float3(name='intensity') 1 1 1
-    light(shader='#light1')
 
-    view(id='myView' position='0 10 120')
+    group(style='transform: translate3d(50px 0 0)')
+      light(shader='#light1')
 
-    group(shader=shader)
-      mesh(src='models/teapot.json')
+    +assets
+
+    view(id='myView' position='0 0 50')
+
+    group(shader=shader style='transform: rotate3d(1, 0, 0, -45deg) rotate3d(0, 0, 1, 45deg)')
+      +cube(pos=cpos)
