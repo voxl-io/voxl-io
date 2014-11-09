@@ -1,21 +1,22 @@
 template(name='editor')
-  h1 xml3d / Meteor integration example
+  x3d
+    scene
+      viewpoint(position='8.19 12.33 19.5' orientation='-0.834 0.55 0 0.65')
+      navigationinfo(type='turntable' headlight='false')
 
-  xml3d(activeView='#myView' class="xml3d" width="600px" height="600px")
+      pointLight(location='0 40 0' intensity='0.3')
+      pointLight(location='-30 10 -20' intensity='0.7')
+      directionalLight(direction='-1 -1 -0.7' color='#ffe' intensity='0.8' shadowIntensity='0.4')
 
-    shader(id='diffuse' script='urn:xml3d:shader:diffuse')
-      float3(name='diffuseColor') 1 1 1
-      bool(name='useVertexColor') false
+      transform(rotation='-1.5707963267948966 0 0 1.5707963267948966')
+        shape
+          appearance
+            material(diffuseColor='#ddd')
+          plane(size='100 100')
 
-    lightshader(id='light1' script='urn:xml3d:lightshader:directional')
-      float3(name='intensity') 1 1 1
-
-    group(style='transform: translate3d(50px 0 0)')
-      light(shader='#light1')
-
-    +assets
-
-    view(id='myView' position='0 0 50')
-
-    group(shader='#diffuse' style='transform: rotate3d(1, 0, 0, -45deg) rotate3d(0, 0, 1, 45deg)')
-      +cube(pos=cube_pos)
+      each voxels
+        transform(translation=_id scale='0.5 0.5 0.5')
+          shape(id=_id)
+            appearance
+              material(diffuseColor=color ambientIntensity='0.1' shininess='0')
+            box
