@@ -26,6 +26,9 @@ class @EditorController extends RouteController
             x = Math.floor(event.worldX + event.normalX / 2) + 0.5
             y = Math.floor(event.worldY + event.normalY / 2) + 0.5
             z = Math.floor(event.worldZ + event.normalZ / 2) + 0.5
+
+            return if y < 0 # keep voxels above ground
+
             color = '#' + Random.hexString(6)
             Voxels.insert
               _id: "#{x} #{y} #{z}"
