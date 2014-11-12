@@ -47,4 +47,3 @@ class @EditorController extends RouteController
 
   data:
     route: 'editor'
-    nologo: yes

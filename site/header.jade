@@ -1,4 +1,6 @@
 template(name='header')
+  +dogear
+
   nav
     a(href="{{pathFor 'home'}}") Home
     a(href="{{pathFor 'editor'}}") Editor
@@ -6,5 +8,3 @@ template(name='header')
     a(href="{{pathFor 'profile'}}") Profile
     if signedIn
       a(href="/sign-out") Sign Out
-  unless nologo
-    img(src='/images/edifice.svg').logo
