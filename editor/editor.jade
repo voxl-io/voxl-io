@@ -1,12 +1,8 @@
 template(name='editor')
-  x3d
+  x3d(showStat='true')
     scene
-      viewpoint(position='8.19 12.33 19.5' orientation='-0.834 0.55 0 0.65')
-      navigationinfo(type='turntable' headlight='false')
-
-      pointLight(location='0 40 0' intensity='0.3')
-      pointLight(location='-30 10 -20' intensity='0.7')
-      directionalLight(direction='-1 -1 -0.7' color='#ffe' intensity='0.8' shadowIntensity='0.4')
+      orthoviewpoint(position='16 19 16' orientation='-0.58232 0.77671 0.24008 0.97598' fieldOfView='-10,-10,10,10')
+      navigationinfo(type='turntable' headlight='true')
 
       transform(rotation='-1.5707963267948966 0 0 1.5707963267948966' translation='-0.5 -0.5 -0.5')
         shape
@@ -14,9 +10,18 @@ template(name='editor')
             material(diffuseColor='#ddd')
           plane(size='100 100')
 
-      each voxels
-        transform(translation=_id scale='0.5 0.5 0.5')
-          shape(id=_id)
-            appearance
-              material(diffuseColor=color ambientIntensity='0.1' shininess='0')
-            box
+      if show_colors
+        transform(translation='-4 0 -4')
+          each colors
+            transform(translation=_id scale='0.5 0.5 0.5')
+              shape(id=_id)
+                appearance
+                  material(diffuseColor=color ambientIntensity='0.8' shininess='0.8')
+                box
+      else
+        each voxels
+          transform(translation=_id scale='0.5 0.5 0.5')
+            shape(id=_id)
+              appearance
+                material(diffuseColor=color ambientIntensity='1.0' shininess='1.0')
+              box

@@ -11,11 +11,7 @@ if Meteor.isServer
       yes
 
   Meteor.startup ->
-    Voxels.remove({})
-    if Voxels.find().count() is 0
-      Voxels.insert
-        _id: '0 0 0'
-        color: '#f00'
+    Voxels.remove {}
 
   Meteor.publish 'my-voxels', ->
     Voxels.find()
