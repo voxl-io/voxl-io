@@ -3,7 +3,7 @@ Router.configure
 
 Router.map ->
   @route 'home',
-    path: '/'
+    path: '/home'
 
   @route 'editor',
     path: '/editor'

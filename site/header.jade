@@ -8,3 +8,5 @@ template(name='header')
     a(href="{{pathFor 'profile'}}") Profile
     if signedIn
       a(href="/sign-out") Sign Out
+    else
+      {{> loginButtons}}
