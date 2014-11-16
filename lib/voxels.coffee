@@ -11,7 +11,7 @@ if Meteor.isServer
       yes
 
   Meteor.startup ->
-    Voxels.remove {}
+    # Voxels.remove {}
 
   Meteor.publish 'my-voxels', ->
     Voxels.find()

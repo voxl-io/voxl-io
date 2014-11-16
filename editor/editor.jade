@@ -1,27 +1,18 @@
 template(name='editor')
-  x3d(showStat='true')
-    scene
-      orthoviewpoint(position='16 19 16' orientation='-0.58232 0.77671 0.24008 0.97598' fieldOfView='-10,-10,10,10')
-      navigationinfo(type='turntable' headlight='true')
+  xml3d
+    +cube
 
-      transform(rotation='-1.5707963267948966 0 0 1.5707963267948966' translation='-0.5 -0.5 -0.5')
-        shape
-          appearance
-            material(diffuseColor='#ddd')
-          plane(size='100 100')
+    if show_colors
+      each colors
+        group(style=pos)
+          model(src='#cube')
+    //- else
+    //-   each voxels
+    //-     transform(translation=_id scale='0.5 0.5 0.5')
+    //-       shape(id=_id)
+    //-         appearance
+    //-           material(diffuseColor=color ambientIntensity='1.0' shininess='1.0')
+    //-         box
 
-      if show_colors
-        transform(translation='-4 0 -4')
-          each colors
-            transform(translation=_id scale='0.5 0.5 0.5')
-              shape(id=_id)
-                appearance
-                  material(diffuseColor=color ambientIntensity='0.8' shininess='0.8')
-                box
-      else
-        each voxels
-          transform(translation=_id scale='0.5 0.5 0.5')
-            shape(id=_id)
-              appearance
-                material(diffuseColor=color ambientIntensity='1.0' shininess='1.0')
-              box
+  script(src='http://www.xml3d.org/xml3d/script/xml3d.js')
+  script(src='http://www.xml3d.org/xml3d/script/tools/camera.js')

@@ -25,6 +25,8 @@ class @EditorController extends RouteController
         Colors.find()
       show_colors: ->
         Session.get 'editor_color_picker_enabled'
+      pos: ->
+        console.log @_id
 
     Template.editor.events
       'mousedown shape, mouseup shape': (event) ->
@@ -57,9 +59,20 @@ class @EditorController extends RouteController
             Session.set 'editor_color_selected', event.currentTarget.id
 
     Template.editor.rendered = ->
-      x3dom.reload()
+      # hack
+      window.initXML3DElement $('xml3d')[0]
+      setTimeout ->
+        $('canvas').attr
+          width: 600
+          height: 600
+        $('canvas').parent().css
+          display: 'block'
+      , 1000
 
     @next()
+
+  onStop: ->
+    $('canvas').parent().remove()
 
   data:
     route: 'editor'
