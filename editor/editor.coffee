@@ -1,6 +1,3 @@
-Voxels = share.Voxels
-Colors = share.Colors
-
 class @EditorController extends RouteController
   template: 'editor'
 
@@ -10,7 +7,15 @@ class @EditorController extends RouteController
       Meteor.subscribe 'my-colors'
     ]
 
-  onBeforeAction: ->
+  Voxels: share.Voxels
+  Colors: share.Colors
+
+  get_color: =>
+    @Colors.findOne(Session.get('editor_color_selected')).color
+
+  onBeforeAction: =>
+    console.log 'editor reporting'
+
     Session.setDefault 'editor_color_picker_enabled', no
     Session.setDefault 'editor_color_selected', '7 7 7'
 
@@ -19,15 +24,15 @@ class @EditorController extends RouteController
         share.toggle_bool 'editor_color_picker_enabled'
 
     Template.editor.helpers
-      voxels: ->
-        Voxels.find()
-      colors: ->
-        Colors.find()
+      voxels: =>
+        @Voxels.find()
+      colors: =>
+        @Colors.find()
       show_colors: ->
         Session.get 'editor_color_picker_enabled'
 
     Template.editor.events
-      'mousedown shape, mouseup shape': (event) ->
+      'mousedown shape, mouseup shape': (event) =>
         if event.type is 'mousedown'
           @lx = event.layerX
           @ly = event.layerY
@@ -46,13 +51,13 @@ class @EditorController extends RouteController
               return if y < 0 # keep voxels above ground
 
               color = '#' + Random.hexString(6)
-              Voxels.insert
+              @Voxels.insert
                 _id: "#{x} #{y} #{z}"
-                color: Colors.findOne(Session.get('editor_color_selected')).color
+                color: @get_color()
               , (err, id) ->
                 err
 
-            else Voxels.remove event.currentTarget.id if event.button is 4 or event.button is 2
+            else @Voxels.remove event.currentTarget.id if event.button is 4 or event.button is 2
           else
             Session.set 'editor_color_selected', event.currentTarget.id
 

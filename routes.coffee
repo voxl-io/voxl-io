@@ -7,6 +7,7 @@ Router.map ->
 
   @route 'editor',
     path: '/editor'
+    controller: 'EditorToolbarController'
 
   @route 'library',
     path: '/library'
