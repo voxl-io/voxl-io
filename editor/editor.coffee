@@ -11,13 +11,13 @@ class @EditorController extends RouteController
   Colors: share.Colors
 
   get_color: =>
-    @Colors.findOne(Session.get('editor_color_selected')).color
+    @Colors.findOne(Session.get('editor_color_selected'))?.color or '7 7 7'
 
-  onBeforeAction: =>
+  get_random_color_indices: ->
+    (Math.floor(Math.random() * 8) for axis in ['x', 'y', 'z']).join ' '
+
+  onAfterAction: =>
     console.log 'editor reporting'
-
-    Session.setDefault 'editor_color_picker_enabled', no
-    Session.setDefault 'editor_color_selected', '7 7 7'
 
     $(window).on 'keyup', (e) ->
       if e.which is 67 # C key
@@ -63,8 +63,6 @@ class @EditorController extends RouteController
 
     Template.editor.rendered = ->
       x3dom.reload()
-
-    @next()
 
   data:
     route: 'editor'
