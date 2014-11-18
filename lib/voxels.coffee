@@ -1,4 +1,4 @@
-@share = share
+@share = share unless Meteor.settings?.production
 share.Voxels = Voxels = new Mongo.Collection 'voxels'
 
 if Meteor.isServer
