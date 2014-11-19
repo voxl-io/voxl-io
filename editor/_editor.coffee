@@ -1,22 +1,5 @@
-class @EditorController extends RouteController
-  template: 'editor'
-
-  waitOn: ->
-    [
-      Meteor.subscribe 'my-voxels'
-      Meteor.subscribe 'my-colors'
-    ]
-
-  Voxels: share.Voxels
-  Colors: share.Colors
-
-  get_color: =>
-    @Colors.findOne(Session.get('editor_color_selected'))?.color or '7 7 7'
-
-  get_random_color_indices: ->
-    (Math.floor(Math.random() * 8) for axis in ['x', 'y', 'z']).join ' '
-
-  onAfterAction: =>
+share.editor_main =
+  onRun: =>
     console.log 'editor reporting'
 
     $(window).on 'keyup', (e) ->
@@ -25,9 +8,9 @@ class @EditorController extends RouteController
 
     Template.editor.helpers
       voxels: =>
-        @Voxels.find()
+        share.Voxels.find()
       colors: =>
-        @Colors.find()
+        share.Colors.find()
       show_colors: ->
         Session.get 'editor_color_picker_enabled'
 
@@ -51,18 +34,15 @@ class @EditorController extends RouteController
               return if y < 0 # keep voxels above ground
 
               color = '#' + Random.hexString(6)
-              @Voxels.insert
+              share.Voxels.insert
                 _id: "#{x} #{y} #{z}"
-                color: @get_color()
+                color: share.editor.get_color()
               , (err, id) ->
                 err
 
-            else @Voxels.remove event.currentTarget.id if event.button is 4 or event.button is 2
+            else share.Voxels.remove event.currentTarget.id if event.button is 4 or event.button is 2
           else
             Session.set 'editor_color_selected', event.currentTarget.id
 
     Template.editor.rendered = ->
       x3dom.reload()
-
-  data:
-    route: 'editor'
