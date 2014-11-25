@@ -25,8 +25,8 @@ if Meteor.isClient
 
 share.editor_toolbar =
 
-  onRun: ->
+  init: ->
     console.log 'toolbar reporting'
 
-    Session.setDefault 'editor_color_picker_enabled', no
-    Session.setDefault 'editor_color_selected', share.editor.get_random_color_indices()
+    Session.set 'editor_color_picker_enabled', no
+    Session.set 'editor_color_selected', share.editor.get_random_color_indices()

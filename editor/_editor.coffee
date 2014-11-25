@@ -1,14 +1,14 @@
 if Meteor.isClient
   Template.editor.helpers
-    voxels: =>
+    voxels: ->
       share.Voxels.find()
-    colors: =>
+    colors: ->
       share.Colors.find()
     show_colors: ->
       Session.get 'editor_color_picker_enabled'
 
   Template.editor.events
-    'mousedown shape, mouseup shape': (event) =>
+    'mousedown shape, mouseup shape': (event) ->
       if event.type is 'mousedown'
         @lx = event.layerX
         @ly = event.layerY
@@ -38,9 +38,9 @@ if Meteor.isClient
           Session.set 'editor_color_selected', event.currentTarget.id
           share.toggle_bool 'editor_color_picker_enabled'
 
-share.editor_main =
-  onRun: =>
-    console.log 'editor reporting'
+  Template.editor.rendered = ->
+    x3dom.reload()
 
-    Template.editor.rendered = ->
-      x3dom.reload()
+share.editor_main =
+  init: ->
+    console.log 'editor reporting'
