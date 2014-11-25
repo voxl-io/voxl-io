@@ -36,6 +36,7 @@ if Meteor.isClient
           else share.Voxels.remove event.currentTarget.id if event.button is 4 or event.button is 2
         else
           Session.set 'editor_color_selected', event.currentTarget.id
+          share.toggle_bool 'editor_color_picker_enabled'
 
 share.editor_main =
   onRun: =>
