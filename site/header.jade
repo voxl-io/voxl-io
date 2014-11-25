@@ -2,9 +2,9 @@ template(name='header')
   +dogear
 
   nav
-    a(href="{{pathFor 'home'}}") Home
-    a(href="{{pathFor 'editor'}}") Editor
-    a(href="{{pathFor 'library'}}") Library
-    a(href="{{pathFor 'profile'}}") Profile
+    a(class="{{isActiveRoute regex='home'}}" href="{{pathFor 'home'}}") Home
+    a(class="{{isActiveRoute regex='editor'}}" href="{{pathFor 'editor'}}") Editor
+    //- a(class="{{isActiveRoute regex='library'}}" href="{{pathFor 'library'}}") Library
     if signedIn
+      a(class="{{isActiveRoute regex='profile'}}" href="{{pathFor 'profile'}}") Profile
       a(href="/sign-out") Sign Out
