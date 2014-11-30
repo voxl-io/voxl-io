@@ -2,19 +2,16 @@ if Meteor.isClient
   tools = [
     'color-swatch'
     'single-block'
-    'draw-block'
+    'draw-blocks'
     'eraser'
   ]
 
   Template.editor_toolbar.helpers
-    color_swatch_style: ->
-      color = share.editor.get_color()
-
     vertical_tools: ->
       tool_classes = []
       for tool in tools
         tool_classes.push
-          tool_class: if Session.get('editor-active-vertical-tool') then tool else "#{tool} active"
+          tool_class: if Session.get('editor_active_vertical_tool') then "#{tool} active" else tool
           tool_style: if tool is 'color-swatch' then "style='background-color: #{share.editor.get_color()};'" else ''
       tool_classes
 
@@ -24,9 +21,8 @@ if Meteor.isClient
       share.toggle_bool 'editor_color_picker_enabled'
 
 share.editor_toolbar =
-
   init: ->
     console.log 'toolbar reporting'
 
-    Session.set 'editor_color_picker_enabled', no
     Session.set 'editor_color_selected', share.editor.get_random_color_indices()
+    Session.set 'editor_active_vertical_tool', 'single-block'
