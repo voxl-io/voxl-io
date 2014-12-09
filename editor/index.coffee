@@ -15,11 +15,11 @@ class @EditorController extends RouteController
     ]
 
   onBeforeAction: ->
-    @next()
-
-  onAfterAction: ->
     share.editor_main.init()
     share.editor_toolbar.init()
+    @next()
+
+  # onAfterAction: ->
 
   data:
     route: 'editor'

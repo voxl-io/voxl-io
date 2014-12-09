@@ -58,22 +58,4 @@ if Meteor.isServer
       console.log "Done adding documents for the color-cube!"
 
   Meteor.publish 'my-colors', ->
-    c = cube_length - 1
-
-    select =
-      $nor: [
-        x:
-          $in: [1...c]
-        y:
-          $in: [1...c]
-        z:
-          $in: [1...c]
-      ]
-
-    console.log select
-
-    results = Colors.find select
-
-    console.log "Displaying #{results.count()} out of #{Math.pow(cube_length, 3)}"
-
-    results
+    Colors.find()

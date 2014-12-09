@@ -3,7 +3,23 @@ if Meteor.isClient
     voxels: ->
       share.Voxels.find()
     colors: ->
-      share.Colors.find()
+      bbox = Session.get 'editor_color_picker_bbox'
+
+      select =
+        $nor: [
+          x:
+            $in: [bbox.xmin + 1 .. bbox.xmax - 1]
+          y:
+            $in: [bbox.ymin + 1 .. bbox.ymax - 1]
+          z:
+            $in: [bbox.zmin + 1 .. bbox.zmax - 1]
+        ]
+
+      console.log select
+      results = share.Colors.find select
+      console.log "Displaying #{results.count()} out of #{Math.pow(8, 3)}"
+      results
+
     show_colors: ->
       Session.get 'editor_color_picker_enabled'
 
