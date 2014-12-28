@@ -3,7 +3,7 @@ if Meteor.isClient
     'color-swatch'
     'single-block'
     'draw-blocks'
-    'eraser'
+    'erase-blocks'
   ]
 
   Template.editor_toolbar.helpers
@@ -17,7 +17,8 @@ if Meteor.isClient
 
   Template.editor_toolbar.events
     'click .vertical-toolbar button': (event) ->
-      Session.set('editor_active_vertical_tool', event.target.className)
+      # Split in case of additional active class.
+      Session.set('editor_active_vertical_tool', event.target.className.split(' ')[0])
 
 share.editor_toolbar =
   init: ->

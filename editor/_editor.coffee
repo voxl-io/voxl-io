@@ -23,6 +23,20 @@ if Meteor.isClient
     show_colors: ->
       Session.get('editor_active_vertical_tool') is 'color-swatch'
 
+  draw_block = (event) ->
+      x = Math.round(event.worldX + event.normalX) + 0
+      y = Math.round(event.worldY + event.normalY) + 0
+      z = Math.round(event.worldZ + event.normalZ) + 0
+
+      return if y < 0 # keep voxels above ground
+
+      color = '#' + Random.hexString(6)
+      share.Voxels.insert
+        _id: "#{x} #{y} #{z}"
+        color: share.editor.get_color()
+      , (err, id) ->
+        err
+
   Template.editor.events
     'mousedown shape, mouseup shape': (event) ->
       if event.type is 'mousedown'
@@ -30,29 +44,17 @@ if Meteor.isClient
         @ly = event.layerY
 
       else
-        return if @lx isnt event.layerX or @ly isnt event.layerY
-
-        unless Session.get('editor_active_vertical_tool') is 'color-swatch'
-          if event.button is 1
-            x = Math.round(event.worldX + event.normalX) + 0
-            y = Math.round(event.worldY + event.normalY) + 0
-            z = Math.round(event.worldZ + event.normalZ) + 0
-
-            console.log x, y, z, event
-
-            return if y < 0 # keep voxels above ground
-
-            color = '#' + Random.hexString(6)
-            share.Voxels.insert
-              _id: "#{x} #{y} #{z}"
-              color: share.editor.get_color()
-            , (err, id) ->
-              err
-
-          else share.Voxels.remove event.currentTarget.id if event.button is 4 or event.button is 2
-        else
-          Session.set 'editor_color_selected', event.currentTarget.id
-          Session.set('editor_active_vertical_tool', 'single-block')
+        switch Session.get('editor_active_vertical_tool')
+          when 'single-block'
+            return if @lx isnt event.layerX or @ly isnt event.layerY
+            draw_block event
+          when 'draw-blocks'
+            draw_block event
+          when 'color-swatch'
+            Session.set 'editor_color_selected', event.currentTarget.id
+            Session.set('editor_active_vertical_tool', 'single-block')
+          when 'erase-blocks'
+            share.Voxels.remove event.currentTarget.id
 
   Template.editor.rendered = ->
     x3dom.reload()
