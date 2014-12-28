@@ -1,18 +1,20 @@
 template(name='home')
-  +logo
+  a(href='/editor')
+    +logo
 
-  article.left
-    ul
-      li Collaboratively edit 3D models in real-time
-      li Create discrete components and add them to model assemblies
-      li Version &amp; share models, and track differences between versions
-      li Open-source model repositories are free
-      li Private repositories are also available
+  if live
+    article.left
+      ul
+        li Collaboratively edit 3D models in real-time
+        li Create discrete components and add them to model assemblies
+        li Version &amp; share models, and track differences between versions
+        li Open-source model repositories are free
+        li Private repositories are also available
 
-  article.right
-    ul
-      li EDIFICE uses #[i voxel octrees] to organize spatial data
-      li A model can be as detailed as necessary
-      li Models can be made at any scale
-      li Octants (sub-voxels) can contain many substances
-      li Use custom or common substances
+    article.right
+      ul
+        li EDIFICE uses #[i voxel octrees] to organize spatial data
+        li A model can be as detailed as necessary
+        li Models can be made at any scale
+        li Octants (sub-voxels) can contain many substances
+        li Use custom or common substances
