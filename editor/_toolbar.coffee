@@ -11,14 +11,13 @@ if Meteor.isClient
       tool_classes = []
       for tool in tools
         tool_classes.push
-          tool_class: if Session.get('editor_active_vertical_tool') then "#{tool} active" else tool
+          tool_class: if Session.get('editor_active_vertical_tool') is tool then "#{tool} active" else tool
           tool_style: if tool is 'color-swatch' then "style='background-color: #{share.editor.get_color()};'" else ''
       tool_classes
 
   Template.editor_toolbar.events
-    'click .color-swatch': (e) ->
-      console.log 'clicked!'
-      share.toggle_bool 'editor_color_picker_enabled'
+    'click .vertical-toolbar button': (event) ->
+      Session.set('editor_active_vertical_tool', event.target.className)
 
 share.editor_toolbar =
   init: ->

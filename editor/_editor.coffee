@@ -21,7 +21,7 @@ if Meteor.isClient
       results
 
     show_colors: ->
-      Session.get 'editor_color_picker_enabled'
+      Session.get('editor_active_vertical_tool') is 'color-swatch'
 
   Template.editor.events
     'mousedown shape, mouseup shape': (event) ->
@@ -32,7 +32,7 @@ if Meteor.isClient
       else
         return if @lx isnt event.layerX or @ly isnt event.layerY
 
-        unless Session.get 'editor_color_picker_enabled'
+        unless Session.get('editor_active_vertical_tool') is 'color-swatch'
           if event.button is 1
             x = Math.round(event.worldX + event.normalX) + 0
             y = Math.round(event.worldY + event.normalY) + 0
@@ -52,7 +52,7 @@ if Meteor.isClient
           else share.Voxels.remove event.currentTarget.id if event.button is 4 or event.button is 2
         else
           Session.set 'editor_color_selected', event.currentTarget.id
-          share.toggle_bool 'editor_color_picker_enabled'
+          Session.set('editor_active_vertical_tool', 'single-block')
 
   Template.editor.rendered = ->
     x3dom.reload()
