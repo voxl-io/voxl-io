@@ -1,0 +1,7 @@
+template(name='editor_toolbar')
+  .vertical-toolbar
+    each vertical_tools
+      if tool_style
+        button(class=tool_class style=tool_style)
+      else
+        button(class=tool_class)
