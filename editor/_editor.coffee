@@ -31,6 +31,35 @@ if Meteor.isClient
       else
         'none'
 
+    handles: ->
+      bbox = Session.get 'editor_color_picker_bbox'
+
+      [
+        _id: 'nnn'
+        _pos: "#{bbox.xmin - 1} #{bbox.ymin - 1} #{bbox.zmin - 1}"
+      ,
+        _id: 'pnn'
+        _pos: "#{bbox.xmax + 1} #{bbox.ymin - 1} #{bbox.zmin - 1}"
+      ,
+        _id: 'npn'
+        _pos: "#{bbox.xmin - 1} #{bbox.ymax + 1} #{bbox.zmin - 1}"
+      ,
+        _id: 'nnp'
+        _pos: "#{bbox.xmin - 1} #{bbox.ymin - 1} #{bbox.zmax + 1}"
+      ,
+        _id: 'ppn'
+        _pos: "#{bbox.xmax + 1} #{bbox.ymax + 1} #{bbox.zmin - 1}"
+      ,
+        _id: 'npp'
+        _pos: "#{bbox.xmin - 1} #{bbox.ymax + 1} #{bbox.zmax + 1}"
+      ,
+        _id: 'pnp'
+        _pos: "#{bbox.xmax + 1} #{bbox.ymin - 1} #{bbox.zmax + 1}"
+      ,
+        _id: 'ppp'
+        _pos: "#{bbox.xmax + 1} #{bbox.ymax + 1} #{bbox.zmax + 1}"
+      ]
+
   draw_block = (event) ->
       x = Math.round(event.worldX + event.normalX) + 0
       y = Math.round(event.worldY + event.normalY) + 0
@@ -65,8 +94,12 @@ if Meteor.isClient
               draw_block_throttled event
           when 'color-swatch'
             if event.type is 'mouseup'
-              Session.set 'editor_color_selected', event.currentTarget.id
-              Session.set('editor_active_vertical_tool', 'single-block')
+              if event.currentTarget.className is 'color'
+                return if @lx isnt event.layerX or @ly isnt event.layerY
+                Session.set 'editor_color_selected', event.currentTarget.id
+                Session.set('editor_active_vertical_tool', 'single-block')
+              else if event.currentTarget.className is 'handle'
+                console.log event
           when 'draw-blocks'
             if Session.get 'mouse_down'
               draw_block_throttled event
