@@ -7,22 +7,28 @@ if Meteor.isClient
       bbox = Session.get 'editor_color_picker_bbox'
 
       select =
-        $nor: [
           x:
-            $in: [bbox.xmin + 1 .. bbox.xmax - 1]
+            $in: [bbox.xmin .. bbox.xmax]
           y:
-            $in: [bbox.ymin + 1 .. bbox.ymax - 1]
+            $in: [bbox.ymin .. bbox.ymax]
           z:
-            $in: [bbox.zmin + 1 .. bbox.zmax - 1]
-        ]
+            $in: [bbox.zmin .. bbox.zmax]
 
-      console.log select
       results = share.Colors.find select
       console.log "Displaying #{results.count()} out of #{Math.pow(8, 3)}"
       results
 
     show_colors: ->
-      Session.get('editor_active_vertical_tool') is 'color-swatch'
+      bbox =
+        xmin: 0
+        ymin: 0
+        zmin: 0
+        xmax: 7
+        ymax: 7
+        zmax: 7
+
+      Session.set 'editor_color_picker_bbox', bbox
+      'color-swatch' is Session.get 'editor_active_vertical_tool'
 
     nav_mode: ->
       tool = Session.get('editor_active_vertical_tool')
@@ -30,6 +36,64 @@ if Meteor.isClient
         'turntable'
       else
         'none'
+
+    handles: ->
+      bbox = Session.get 'editor_color_picker_bbox'
+
+      [
+        _id: 'nnn'
+        _pos: "#{bbox.xmin - 1} #{bbox.ymin - 1} #{bbox.zmin - 1}"
+      ,
+        _id: 'pnn'
+        _pos: "#{bbox.xmax + 1} #{bbox.ymin - 1} #{bbox.zmin - 1}"
+      ,
+        _id: 'npn'
+        _pos: "#{bbox.xmin - 1} #{bbox.ymax + 1} #{bbox.zmin - 1}"
+      ,
+        _id: 'nnp'
+        _pos: "#{bbox.xmin - 1} #{bbox.ymin - 1} #{bbox.zmax + 1}"
+      ,
+        _id: 'ppn'
+        _pos: "#{bbox.xmax + 1} #{bbox.ymax + 1} #{bbox.zmin - 1}"
+      ,
+        _id: 'npp'
+        _pos: "#{bbox.xmin - 1} #{bbox.ymax + 1} #{bbox.zmax + 1}"
+      ,
+        _id: 'pnp'
+        _pos: "#{bbox.xmax + 1} #{bbox.ymin - 1} #{bbox.zmax + 1}"
+      ,
+        _id: 'ppp'
+        _pos: "#{bbox.xmax + 1} #{bbox.ymax + 1} #{bbox.zmax + 1}"
+      ]
+
+    config_handle: (handle_id) ->
+      setTimeout =>
+        x3el = $('#x3dom-editor')[0]
+        $handle = $('#' + @)
+
+        move_cb = (elem, trans) ->
+          bbox = Session.get 'editor_color_picker_bbox'
+          dirs = elem.id.split('')
+          axes = ['x', 'y', 'z']
+
+          for dir, i in dirs
+            axis = axes[i]
+            if dir is 'n'
+              # console.log 'min', bbox["#{axis}min"]
+              bbox["#{axis}min"] += trans[axis] if bbox["#{axis}min"] > 0 and bbox["#{axis}min"] > 0
+            else
+              # console.log 'max', bbox["#{axis}max"]
+              bbox["#{axis}max"] += trans[axis] if bbox["#{axis}max"] < 8 and bbox["#{axis}max"] > 0
+
+          Session.set 'editor_color_picker_bbox', bbox
+
+        move_cb_throttled = _.throttle move_cb, 500
+
+        if $handle[0]
+          new x3dom.Moveable x3el, $handle[0], move_cb_throttled, 1.0
+      , 0
+
+      null
 
   draw_block = (event) ->
       x = Math.round(event.worldX + event.normalX) + 0
@@ -65,8 +129,12 @@ if Meteor.isClient
               draw_block_throttled event
           when 'color-swatch'
             if event.type is 'mouseup'
-              Session.set 'editor_color_selected', event.currentTarget.id
-              Session.set('editor_active_vertical_tool', 'single-block')
+              if event.currentTarget.className is 'color'
+                return if @lx isnt event.layerX or @ly isnt event.layerY
+                Session.set 'editor_color_selected', event.currentTarget.id
+                Session.set('editor_active_vertical_tool', 'single-block')
+              else if event.currentTarget.className is 'handle'
+                console.log event
           when 'draw-blocks'
             if Session.get 'mouse_down'
               draw_block_throttled event

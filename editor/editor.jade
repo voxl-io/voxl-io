@@ -1,5 +1,5 @@
 template(name='editor')
-  x3d(showStat='true')
+  x3d(showStat='true' id='x3dom-editor')
     scene
       orthoviewpoint(position='16.62003 17.75025 16.78401' orientation='-0.61002 0.75160 0.25093 1.00151' fieldOfView='-10,-10,10,10')
       navigationinfo(type=nav_mode headlight='true')
@@ -10,10 +10,17 @@ template(name='editor')
         transform(translation='-4 -4 -4')
           each colors
             transform(translation=_id scale='0.5 0.5 0.5')
-              shape(id=_id)
+              shape(id=_id class='color')
                 appearance
                   material(diffuseColor=color ambientIntensity='0.5' shininess='0.5')
                 box
+          each handles
+            transform(translation=_pos scale='0.5 0.5 0.5')
+              shape(id=_id class='handle')
+                appearance
+                  material(diffuseColor='0.9 0.9 0.9' ambientIntensity='0.5' shininess='0.5')
+                sphere
+            +config_handle(_id)
       else
         transform(rotation='-1.5707963267948966 0 0 1.5707963267948966' translation='-0.5 -0.5 -0.5')
           shape
