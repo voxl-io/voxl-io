@@ -26,15 +26,4 @@ share.editor_toolbar =
     console.log 'toolbar reporting'
 
     Session.setDefault 'editor_color_selected', share.editor.get_random_color_indices()
-
-    bbox =
-      xmin: 0
-      ymin: 0
-      zmin: 0
-      xmax: 7
-      ymax: 7
-      zmax: 7
-
-    Session.setDefault 'editor_color_picker_bbox', bbox
-
     Session.set 'editor_active_vertical_tool', 'single-block'
