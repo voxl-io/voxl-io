@@ -102,9 +102,9 @@ if Meteor.isClient
 
       return if y < 0 # keep voxels above ground
 
-      color = '#' + Random.hexString(6)
       share.Voxels.insert
         _id: "#{x} #{y} #{z}"
+        color_index: Session.get('editor_color_selected')
         color: share.editor.get_color()
       , (err, id) ->
         err
@@ -133,14 +133,16 @@ if Meteor.isClient
                 return if @lx isnt event.layerX or @ly isnt event.layerY
                 Session.set 'editor_color_selected', event.currentTarget.id
                 Session.set('editor_active_vertical_tool', 'single-block')
-              else if event.currentTarget.className is 'handle'
-                console.log event
           when 'draw-blocks'
             if Session.get 'mouse_down'
               draw_block_throttled event
           when 'erase-blocks'
             if Session.get 'mouse_down'
               erase_block_throttled event
+          when 'eyedropper'
+            if event.type is 'mouseup'
+              color = share.Voxels.findOne(event.currentTarget.id).color_index
+              Session.set 'editor_color_selected', color
 
       if event.type is 'mouseup'
         Session.set 'mouse_down', no

@@ -4,7 +4,7 @@ if Meteor.isClient
     'single-block'
     'draw-blocks'
     'erase-blocks'
-    'slicing'
+    'eyedropper'
   ]
 
   Template.editor_toolbar.helpers

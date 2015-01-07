@@ -1,6 +1,6 @@
 share.editor =
   get_color: ->
-    share.Colors.findOne(Session.get('editor_color_selected'))?.color or '7 7 7'
+    share.Colors.findOne(Session.get('editor_color_selected'))?.color or '#ccc'
 
   get_random_color_indices: ->
     (Math.floor(Math.random() * 8) for axis in ['x', 'y', 'z']).join ' '
