@@ -1,7 +1,28 @@
-.logo path, .dogear path
-  transition: fill-opacity 2.5s
-
-.dogear
+.logo
   position absolute
-  left 0
-  top 0
+  top 200px
+  left 50%
+  transform translate(-50%, -50%)
+
+  .left
+    fill #a40000
+
+  .right
+    fill #c00
+
+  .top
+    fill #ef2929
+
+  .left, .right, .top
+    fill-opacity 1
+    stroke none
+
+  .outline path
+    fill none
+    stroke #2e3436
+    stroke-width 5
+    stroke-miterlimit 4
+
+  .io text
+    font-family "Trebuchet MS", Helvetica, sans-serif
+    fill white
