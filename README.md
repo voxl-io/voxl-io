@@ -1,10 +1,10 @@
-EDIFICE
+voxl.io
 =======
 
 An accessible means of visually modeling processes and systems.
 
 # Purpose
-EDIFICE aims to provide a virtual platform for easily and interactively modeling complex ideas and concepts about real-world processes and dynamic systems. To do this, voxels, a standard unit of volume, is used to approximate the state of substances.
+voxl.io aims to provide a virtual platform for easily and interactively modeling complex ideas and concepts about real-world processes and dynamic systems. To do this, voxels, a standard unit of volume, is used to approximate the state of substances.
 
 # Technologies
 Voxels are used to represent discrete volumes with quantifiable properties. Each voxel is kept as a document in a MongoDB collection, easily referenced by its Cartesian coordinates, as well as its relative scale, in addition to the world and user it belongs to.

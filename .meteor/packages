@@ -10,11 +10,10 @@ cryptoquick:stylus-multi
 mrt:underscore-string-latest
 iron:router
 joshowens:accounts-entry
-accounts-ui
+accounts-password
 aldeed:collection2
 aldeed:autoform
 alanning:roles
 mrt:define
 acemtp:x3dom
 zimme:iron-router-active
-
